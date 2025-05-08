@@ -1,0 +1,79 @@
+# Assignment 6 reflection
+
+## Submitter metadata
+
+Partner 1: Ahmed Mustafa (am3324)
+Partner 2: Jimmy Wang (zw676)
+
+Hours spent working on this assignment: 20.0
+
+## Verification questions
+
+Play a game of PacMann (on the default 10 x 10 board) by running "GraphicalApp.java".
+If you completed the assignment with a partner, both partners should independently 
+play the game and report on the following items:
+
+## Jimmy's Game:
+1. How many pellets (i.e., the big circles) did PacMann eat?
+
+   Answer: 3
+
+2. During each of the FLEE sequences, how many ghosts did PacMann eat?
+
+   Answer: 2, 2, 2
+
+3. What was your final score?
+
+   Answer: 5060
+
+## Ahmed's Game:
+1. How many pellets (i.e., the big circles) did PacMann eat?
+
+   Answer: 3
+
+2. During each of the FLEE sequences, how many ghosts did PacMann eat?
+
+   Answer: 2, 2, 2
+
+3. What was your final score?
+
+   Answer: 5060
+
+## Reflection questions
+
+1. For TODO 1, briefly explain how you constructed your graph. Did you discover
+   the maze via a BFS/DFS search, or did you iterate directly over the tile grid
+   to locate edges? Why did you choose this approach?
+   
+   Answer: I built the maze graph by performing BFS over the set of PATH tiles. Firstly, I scanned
+   the entire grid, and everytime I found an unvisited PATH tile, I enqueued it, then repeatedly
+   dequeued the next tile, created its graph vertex if needed, explored all four neighboring
+   directions, and (for each adjacent path tile) added the corresponding bidirectional edges. This
+   BFS strategy ensures that each tile is processed exactly once, avoids redundant vertex or edge
+   creation, and naturally walks through an entire connected component of the maze in linear time.
+   In contrast, a blind nested-loop approach would check every cell’s neighbors regardless of
+   whether a tile had already been graph-represented, leading to duplicate work and redundancy.
+
+2. In the original Pac-Man game, a piece of fruit appeared at a predetermined 
+   position on the board once Pac-Man had eaten 70 dots and remained on the screen 
+   for 9 seconds. Eating this fruit awarded the player a score bonus. Describe how 
+   you could add this feature to your PacMann game. Which files, fields, or methods 
+   would you need to edit / add? 
+
+   Answer: To add this time-limited feature to PacMann, I would d edit GameModel to track PacMann's
+   progress. Firstly, I would add private fields for the count of dots eaten, a boolean indicating
+   whether the fruit is currently active on board, and a timestamp marking when the fruit was
+   spawned. In the main game-update routine, once the dot threshold (70) is reached, I would
+   “spawn” the fruit at the predetermined location, set the active boolean, and record the current
+   time. On every subsequent update tick, I'd compare the elapsed time against the nine-second
+   lifespan to deactivate (and remove) the fruit if the time is up / expired. Finally, the collision
+   / item-pickup logic would check for encounters between Pac-Man and the fruit while the active
+   flag is set, award the bonus score, and immediately clear the fruit. On the UI side, I would
+   draw the fruit sprite via GameFrame whenever it’s active and remove once the timer is up.
+
+(Answer RQ3 only if you completed the challenge extension, otherwise delete it.)
+
+3. In a couple of sentences, explain the strategy employed by your PacMannAI.
+
+   Answer: TODO
+
