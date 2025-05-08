@@ -4,14 +4,6 @@ import java.util.List;
 import model.MazeGraph.MazeEdge;
 import model.MazeGraph.MazeVertex;
 
-// TODO 5: Extend this class by defining a (non-abstract) subclass `PacMannManual` in a new file
-//  "model/PacMannManual.java".  This class determines PacMann's next edge based on the most recent
-//  directional command entered by the player.  See the assignment description for more details.
-
-// TODO (Challenge Extension): Extend this class by defining a (non-abstract) subclass `PacMannAI`
-//  in a new file "model/PacMannAI.java".  This class determines PacMann's next edge based on
-//  whatever logic you choose.  See the assignment description for more details.
-
 /**
  * The yellow protagonist of the game who seeks to eat the dots in the board maze while evading
  * capture by the ghosts. Subclasses are responsible to PacMann's navigation, whether this is from

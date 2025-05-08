@@ -9,8 +9,10 @@ public class PacMannManual extends PacMann{
     private final GameModel model;
 
     /**
-     * Constructs a new manually-controlled PacMann.
-     * @param model The game model this PacMann belongs to
+     * Constructs a new manually-controlled PacMann based on player input.
+     * First tries to return the edge in the direction of the player's most recent command.
+     * If movement in that direction isn't possible, attempts to continue in the current direction.
+     * Returns null if neither option is possible.
      */
     public PacMannManual(GameModel model) {
         super(model);
@@ -21,7 +23,7 @@ public class PacMannManual extends PacMann{
     public MazeEdge nextEdge() {
         MazeVertex current = nearestVertex();
 
-        // First try player's command direction
+        // 1. Try player's command direction
         Direction command = model.playerCommand();
         if (command != null) {
             MazeEdge edge = current.edgeInDirection(command);
@@ -30,7 +32,7 @@ public class PacMannManual extends PacMann{
             }
         }
 
-        // Then try current movement direction
+        // 2. Try current movement direction
         if (location().edge() != null) {
             Direction currentDir = location().edge().direction();
             MazeEdge edge = current.edgeInDirection(currentDir);
@@ -39,7 +41,7 @@ public class PacMannManual extends PacMann{
             }
         }
 
-        // No valid edge in either direction
+        // No valid edge in either direction -> stop moving
         return null;
     }
 }

@@ -73,36 +73,46 @@ public class InteractiveGameController implements KeyListener {
 
         // Map key codes to directions
         switch (e.getKeyCode()) {
+            // Left movement
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_A:
                 direction = Direction.LEFT;
                 break;
+
+            // Right movement
             case KeyEvent.VK_RIGHT:
             case KeyEvent.VK_D:
                 direction = Direction.RIGHT;
                 break;
+
+            // Up movement
             case KeyEvent.VK_UP:
             case KeyEvent.VK_W:
                 direction = Direction.UP;
                 break;
+
+            // Down movement
             case KeyEvent.VK_DOWN:
             case KeyEvent.VK_S:
                 direction = Direction.DOWN;
                 break;
+
+            // Start/Pause
             case KeyEvent.VK_SPACE:
                 // Space has same effect as start/pause button
                 processStartPause();
                 return;
         }
 
-        // If we got a direction command, handle it
+        // Handles all direction commands
         if (direction != null) {
-            // Start game if not already running
+
+            // Starts game if not already running
             if (state == GameState.PAUSED || state == GameState.LIFESTART) {
                 processStartPause();
             }
 
-            // Update the model with the new direction
+            // Updates  model with new direction
             model.updatePlayerCommand(direction);
         }
     }

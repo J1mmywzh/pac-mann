@@ -91,21 +91,17 @@ public class GameModel {
      */
     private int numLives;
 
-    // TODO 4: Add a field to keep track of the Direction associated with the most recent player
-    //  input.  Also, add a `playerCommand()` accessor and an `updatePlayerCommand()` mutator method
-    //  for this field.
     private Direction playerCommand;
 
     /**
-     * Returns the most recent direction command from the player.
+     * Returns the most recent direction command from the player
      */
     public Direction playerCommand() {
         return playerCommand;
     }
 
     /**
-     * Updates the player's most recent direction command.
-     * @param direction The new direction command
+     * Updates the player's most recent direction command
      */
     public void updatePlayerCommand(Direction direction) {
         this.playerCommand = direction;
@@ -342,15 +338,10 @@ public class GameModel {
     public void processPacMannArrival() {
         MazeVertex v = pacMann().nearestVertex();
 
-        // TODO 3: Update the model based on PacMann's arrival at vertex `v`. If there is an item
-        //  positioned on `v`, remove it (it was eaten by PacMann). If this was a DOT, increase the
-        //  score by 10 and notify "score" observers. If this was a PELLET, increase the score by
-        //  50, notify "score" observers, and initiate the FLEE sequence.  Pay careful attention to
-        //  the invariant on`items`.
         // Check if there's an item at this vertex
         Item item = items.get(v);
         if (item != null) {
-            // Remove the item since PacMann ate it
+            // PacMann eats item -> remove it by deleting vertices
             items.remove(v);
 
             // Update score based on item type
@@ -360,11 +351,12 @@ public class GameModel {
                     break;
                 case PELLET:
                     addToScore(50);
-                    startFlee();  // Initiate ghost flee state
+                    // Initiate ghost flee state
+                    startFlee();
                     break;
             }
 
-            // Check if all items are eaten (victory condition)
+            // Check if all items are eaten (victory)
             if (items.isEmpty()) {
                 victory();
             }
