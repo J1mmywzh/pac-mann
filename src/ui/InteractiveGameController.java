@@ -59,20 +59,11 @@ public class InteractiveGameController implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // TODO 6: Complete the definition of this KeyListener method to respond to key pressed by
-        //  the user. When the left arrow or letter 'a' key is pressed, this is interpreted as a
-        //  LEFT directional command, and the model should be updated to reflect this. Similarly,
-        //  pressing the right arrow or letter 'd' is interpreted as a RIGHT directional command.
-        //  The up arrow and letter 'w' are interpreted as UP directional commands. The down arrow
-        //  and letter 's' are interpreted as DOWN directional commands. Pressing the space key
-        //  should have the same effect as pressing the start/pause button in the GUI. Also, when
-        //  directional commands are entered when the game is PAUSED or between lives (in state
-        //  LIFESTART), the game should begin RUNNING and the timer should start.
-
         Direction direction = null;
 
         // Map key codes to directions
         switch (e.getKeyCode()) {
+
             // Left movement
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_A:

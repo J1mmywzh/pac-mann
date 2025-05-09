@@ -47,11 +47,6 @@ public class Pathfinding {
         // vertex.  Populated as vertices are discovered (not as they are settled).
         Map<V, PathEnd<E>> pathInfo = new HashMap<>();
 
-        // TODO 11a: Complete the implementation of this method according to its specification. Your
-        //  implementation should make use of Dijkstra's algorithm (modified to prevent path back-
-        //  tracking), creating a `MinPQueue` to manage the "frontier" set of vertices, and settling
-        //  the vertices in this frontier in increasing distance order.
-
         MinPQueue<V> frontier = new MinPQueue<>();
 
         // Initialize with source vertex
@@ -98,7 +93,6 @@ public class Pathfinding {
         // before returning)
         List<E> path = new LinkedList<>();
 
-        // TODO 11b: Complete this implementation of this method according to its specification.
         V current = dst;
 
         // Walk backwards from destination to source

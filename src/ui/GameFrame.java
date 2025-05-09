@@ -135,11 +135,6 @@ public class GameFrame extends JFrame implements PropertyChangeListener {
      * Show a modal dialog indicating that the current game has been won.
      */
     private void showWinMessage() {
-        // TODO 17b: Create and show a `JOptionPane` that congratulates the user for winning the
-        //   game and reports their final score (the exact wording/presentation is up to you). Use
-        //   the `JOptionPane` documentation to determine an appropriate method to call to produce
-        //   this dialog box and understand its parameters. When the dialog is closed by the player,
-        //   a new game should be created and shown.
         int score = model.score();
         JOptionPane.showMessageDialog(this.getParent(), "you win with score of " + score);
         newGame();
@@ -149,11 +144,6 @@ public class GameFrame extends JFrame implements PropertyChangeListener {
      * Show a modal dialog indicating that the current game has been lost.
      */
     private void showLoseMessage() {
-        // TODO 17c: Create and show a `JOptionPane` that tells the user that their game is over and
-        //  reports their final score (the exact wording/presentation is up to you). Use the
-        //   `JOptionPane` documentation to determine an appropriate method to call to produce this
-        //   dialog box and understand its parameters. When the dialog is closed by the player, a
-        //   new game should be created and shown.
         int score = model.score();
         JOptionPane.showMessageDialog(this.getParent(), "you lose with score of " + score);
         newGame();
@@ -161,13 +151,6 @@ public class GameFrame extends JFrame implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        // TODO 17a: Complete this method definition, which should detect a change to the
-        //  "game_result" property. The method `evt.getNewValue()` returns an Object with
-        //  dynamic type `GameModel.GameState` that informs whether the game ended in a
-        //  `VICTORY` or a `DEFEAT`. Based upon which, call `showWinMessage()` or
-        //  `showLoseMessage()`. You can see other examples of the *observer pattern* in the
-        //  `ScoreLabel` and `PlayPauseButton` classes, which should help inform how to structure
-        //  this code.
         if ("game_result".equals(evt.getPropertyName())) {
             GameModel.GameState gameState = (GameModel.GameState) evt.getNewValue();
             if (gameState == GameState.VICTORY) {

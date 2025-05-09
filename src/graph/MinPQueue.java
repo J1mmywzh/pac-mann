@@ -34,7 +34,6 @@ public class MinPQueue<KeyType> {
      */
     private final Map<KeyType, Integer> index;
 
-    // TODO 7: Write an assertInv() method that asserts that all of the class invariants are satisfied.
     /**
      * Asserts that all class invariants are satisfied.
      * @throws AssertionError if any invariant is violated
@@ -107,7 +106,6 @@ public class MinPQueue<KeyType> {
      * {@code 0 <= i,j < heap.size()}.
      */
     private void swap(int i, int j) {
-        // TODO 8a: Implement this method according to its specification
         // Get the entries at positions i and j
         Entry<KeyType> entryI = heap.get(i);
         Entry<KeyType> entryJ = heap.get(j);
@@ -121,12 +119,9 @@ public class MinPQueue<KeyType> {
         index.put(entryJ.key(), i);
     }
 
-    // TODO 8b: Implement private helper methods for bubbling entries up and down in the heap.
-    //  Their interfaces are up to you, but you must write precise specifications.
-
     /**
-     * Bubbles up the entry at index `i` to restore the heap property.
-     * Requires {@code 0 <= i < heap.size()}.
+     * Bubbles up the entry at index `i` to restore the heap property
+     * Requires 0 <= i < heap.size()
      */
     private void bubbleUp(int i) {
         while (i > 0) {
@@ -173,7 +168,6 @@ public class MinPQueue<KeyType> {
      * contained in this queue.
      */
     private void add(KeyType key, double priority) {
-        // TODO 9a: Implement this method according to its specification
         assert !index.containsKey(key);
 
         // Create new entry and add to end of heap
@@ -194,7 +188,6 @@ public class MinPQueue<KeyType> {
     private void update(KeyType key, double priority) {
         assert index.containsKey(key);
 
-        // TODO 9b: Implement this method according to its specification
         int i = index.get(key);
         double oldPriority = heap.get(i).priority();
         heap.set(i, new Entry<>(key, priority));
@@ -228,7 +221,6 @@ public class MinPQueue<KeyType> {
      * Throws NoSuchElementException if this queue is empty.
      */
     public KeyType remove() {
-        // TODO 9c: Implement this method according to its specification
         if (heap.isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
         }

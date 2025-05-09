@@ -8,11 +8,6 @@ import model.MazeGraph.IPair;
 import model.MazeGraph.MazeVertex;
 import graph.Pathfinding;
 
-
-// TODO 13-16: Extend this class by defining (non-abstract) subclasses `Blinky`, `Pinky`, `Inky`,
-//  and `Clyde`, each in separate files "model/<Ghost name>.java", that model these ghosts unique
-//  properties and behaviors as described in the assignment handout.
-
 /**
  * A ghost in the game. This abstract class models the common behaviors and attributes of all ghosts
  * including their appearance and different behavioral states:
